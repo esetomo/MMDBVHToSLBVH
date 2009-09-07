@@ -59,7 +59,7 @@ namespace WpfApplication1
             foreach (CompositeElement joint in bvhTo.BVH.JointList)
             {
                 JointFrame jf = bvhTo.BVH.FrameList[0].GetJointFrame(joint.Name);
-                jf.SetValue("Xrotation", 100.0);
+                jf.SetValue("Xrotation", 0.1);
             }
         }
 
