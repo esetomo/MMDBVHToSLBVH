@@ -1,7 +1,8 @@
 ﻿* MikuMikuDance用のモーションデータをSecond Life用のアニメーションに変換するツール
 
-といっても私にはvmdファイルの構造は分かりませんので、
-あらかじめmioでBVHに変換しておく必要があります。
+実行には.NET Framework 3.5が必要です。
+
+vmdファイルは読み込めません。あらかじめmioでBVHに変換しておく必要があります。
 http://www6.atwiki.jp/vpvpwiki/pages/218.html#id_d089ecef
 
 入力も出力もBVHファイルとなりますが、以下の変換を行っています。
