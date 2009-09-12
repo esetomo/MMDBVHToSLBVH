@@ -1,6 +1,10 @@
 ﻿* MikuMikuDance用のモーションデータをSecond Life用のアニメーションに変換するツール
 
-実行には.NET Framework 3.5が必要です。
+めんどいのでパッケージ化していません。
+上のファイルリストから「MMDBVHToSLBVH.exe」→「View Raw」で持って行ってください。
+他のファイルはソースファイルです。
+
+実行には.NET Framework 3.5が必要です。（Visual C# 2008 Expressで作成しました。）
 
 vmdファイルは読み込めません。あらかじめmioでBVHに変換しておく必要があります。
 http://www6.atwiki.jp/vpvpwiki/pages/218.html#id_d089ecef
