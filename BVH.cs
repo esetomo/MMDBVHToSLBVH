@@ -14,7 +14,7 @@ namespace WpfApplication1
     {
         private readonly List<CompositeElement> m_joint_list = new List<CompositeElement>();
         private readonly FrameElementList m_frame_list = new FrameElementList();
-        private RootElement m_root;
+        private CompositeElement m_root;
         private FramesElement m_frames;
         private FrameTimeElement m_frame_time;
 
@@ -82,7 +82,7 @@ namespace WpfApplication1
             }
         }
 
-        private const int FRAMES_PER_FILE = 890;
+        private const int FRAMES_PER_FILE = 901;
 
         public void Save(string fileName)
         {
@@ -170,6 +170,14 @@ namespace WpfApplication1
                 return;
             }
 
+            JointElement joint = child as JointElement;
+            if (joint != null)
+            {
+                m_root = joint;
+                m_joint_list.Add(joint);
+                return;
+            }
+
             FramesElement frames = child as FramesElement;
             if (frames != null)
             {
@@ -210,7 +218,7 @@ namespace WpfApplication1
             }
         }
 
-        public RootElement Root
+        public CompositeElement Root
         {
             get
             {
