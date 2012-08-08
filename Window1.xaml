@@ -11,6 +11,7 @@
             </MenuItem>
             <MenuItem Header="_Option">
                 <MenuItem Name="menuItemUseAll" Header="_Use All Joints" IsCheckable="True" Checked="UseAll_Checked" Unchecked="UseAll_Unchecked"/>
+                <MenuItem Name="menuDurationSetter" Header="_Duration" Click="menuDurationSetter_Click" />
             </MenuItem>
         </Menu>
         <Grid>

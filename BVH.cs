@@ -82,7 +82,7 @@ namespace WpfApplication1
             }
         }
 
-        private const int FRAMES_PER_FILE = 901;
+        public static volatile int FRAMES_PER_FILE = 901;
 
         public void Save(string fileName)
         {

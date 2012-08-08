@@ -70,5 +70,11 @@ namespace WpfApplication1
                 jf.SetValue("Xrotation", 0.0);
             }
         }
+
+        private void menuDurationSetter_Click(object sender, RoutedEventArgs e)
+        {
+            FpsInputWindow fpsInputWindow = new FpsInputWindow();
+            fpsInputWindow.ShowDialog();
+        }
     }
 }
