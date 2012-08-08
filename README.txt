@@ -1,5 +1,10 @@
 ﻿* MikuMikuDance用のモーションデータをSecond Life用のアニメーションに変換するツール
 
+esetomoさん作成のMMDBVHToSLBVHをforkして拡張(中)
+
+
+
+---- master readme.txt --------------------------------------------------
 めんどいのでパッケージ化していません。
 上のファイルリストから「MMDBVHToSLBVH.exe」→「View Raw」で持って行ってください。
 他のファイルはソースファイルです。
