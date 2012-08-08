@@ -1,7 +1,8 @@
 ﻿* MikuMikuDance用のモーションデータをSecond Life用のアニメーションに変換するツール
 
 esetomoさん作成のMMDBVHToSLBVHをforkして拡張(中)
-
+・MMDモーションで上半身２を使っているVMDモーションをSecondlife側の chest に対応させる
+・分割秒数を１０秒～３０秒で指定可能にする
 
 
 ---- master readme.txt --------------------------------------------------

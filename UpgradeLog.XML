@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="MMDBVHToSLBVH">
+</Property><Property Name="ソリューション ファイル" Value="C:\Users\snuma\Documents\GitHub\MMDBVHToSLBVH\MMDBVHToSLBVH.sln">
+</Property><Property Name="Date" Value="2012年8月8日">
+</Property><Property Name="Time" Value="18:16">
+</Property></Properties><Event ErrorLevel="0" Project="MMDBVHToSLBVH" Source="MMDBVHToSLBVH.csproj" Description="プロジェクトは正常に変換されました。">
+</Event><Event ErrorLevel="3" Project="MMDBVHToSLBVH" Source="MMDBVHToSLBVH.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="MMDBVHToSLBVH.sln" Description="ソリューションは正常に変換されました">
+</Event><Event ErrorLevel="3" Project="" Source="MMDBVHToSLBVH.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="MMDBVHToSLBVH" Source="MMDBVHToSLBVH.csproj" Description="スキャンが完了しました: プロジェクト ファイルにアップグレードは必要ありません。">
+</Event></UpgradeLog>

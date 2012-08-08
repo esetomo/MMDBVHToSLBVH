@@ -81,6 +81,7 @@ namespace WpfApplication1
                     matrix.Append(lowerMatrix);
                     jfDest.Matrix = matrix;
                     break;
+                // cast "chest" はなにもしない。MMDBVHで指定されている数値をそのままSLBVHとして利用
                 case "lShldr":
                     matrix = jfDest.Matrix;
                     matrix.RotatePrepend(new Quaternion(new Vector3D(0, 0, 1), -35));
@@ -117,6 +118,10 @@ namespace WpfApplication1
                     return "lower_body";
                 case "abdomen":
                     return "upper_body";
+                //added------------------
+                case "chest": 
+                    return "upper_body2";
+                //-----------------------
                 case "lCollar":
                     return "shoulder.L";
                 case "lShldr":
