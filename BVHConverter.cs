@@ -120,7 +120,8 @@ namespace WpfApplication1
                     return "upper_body";
                 //added------------------
                 case "chest": 
-                    return "upper_body2";
+                    //return "upper_body2";
+                    return "\u4e0a\u534a\u8eab2";
                 //-----------------------
                 case "lCollar":
                     return "shoulder.L";
