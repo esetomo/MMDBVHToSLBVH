@@ -7,12 +7,12 @@ using System.Windows;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("WpfApplication1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MMDBVHToSLBVH")]
+[assembly: AssemblyDescription("Moded by snumaw")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WpfApplication1")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyProduct("snumaw MMDBVHToSLBVH")]
+[assembly: AssemblyCopyright("github.com/esetomo/MMDBVHToSLBVH")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
