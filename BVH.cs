@@ -266,7 +266,7 @@ namespace WpfApplication1
     public abstract class CompositeElement : Element
     {
         private readonly BVH m_bvh;
-        private readonly string m_name;
+        private string m_name;
         private readonly ObservableCollection<CompositeElement> m_joint_list;
         private OffsetElement m_offset;
         private ChannelsElement m_channels;
@@ -300,6 +300,10 @@ namespace WpfApplication1
             CompositeElement joint = child as CompositeElement;
             if (joint != null)
             {
+                if (joint.Name == "\\u4e0a\\u534a\\u8eab2")
+                {
+                    joint.m_name = "upper_body2";
+                }
                 m_joint_list.Add(joint);
                 return;
             }

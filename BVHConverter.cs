@@ -119,7 +119,9 @@ namespace WpfApplication1
                 case "abdomen":
                     return "upper_body";
                 //added------------------
-                case "chest": 
+                //mio側の上半身2-upper_body2のカスタマイズを不要にするためBVH.csで名前変換
+                //mioカスタマイズ済みで upper_body2 があった場合でも対応
+                case "chest":
                     return "upper_body2";
                 //-----------------------
                 case "lCollar":
