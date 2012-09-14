@@ -25,7 +25,7 @@ namespace WpfApplication1
 
         private void CommitButton_Click(object sender, RoutedEventArgs e)
         {
-            double frameDuration = (((int) durationSlider.Value) * 30.0) + 1;
+            double frameDuration = (((int) durationSlider.Value) * 30.0) ;
 
             BVH.FRAMES_PER_FILE = (int) frameDuration;
 
@@ -47,7 +47,7 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.durationSlider.Value = (BVH.FRAMES_PER_FILE - 1) / 30;
+            this.durationSlider.Value = (BVH.FRAMES_PER_FILE) / 30;
             this.durationValueLabel.Content = String.Format("{0} sec", (int)this.durationSlider.Value);
         }
     }

@@ -82,11 +82,11 @@ namespace WpfApplication1
             }
         }
 
-        public static volatile int FRAMES_PER_FILE = 901;
+        public static volatile int FRAMES_PER_FILE = 900;
 
         public void Save(string fileName)
         {
-            if (m_frames.Value < FRAMES_PER_FILE)
+            if (m_frames.Value < FRAMES_PER_FILE) //指定秒数のフレーム(30FPS)未満なら一気に保存
             {
                 using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
@@ -115,7 +115,7 @@ namespace WpfApplication1
 
         private void SaveSplit(string fileName)
         {
-            int index = 1;
+            int index = 1;　//複数ファイルのインデックス
             int startFrame = 1;
 
             while (startFrame < m_frames.Value)
@@ -127,7 +127,7 @@ namespace WpfApplication1
                                           Path.GetExtension(fileName)),
                             startFrame);
 
-                startFrame += FRAMES_PER_FILE;
+                startFrame += FRAMES_PER_FILE-1;
                 index += 1;
             }
         }
@@ -142,19 +142,18 @@ namespace WpfApplication1
 
         private void SavePartial(Stream stream, int startFrame)
         {
-            int endFrame = startFrame + FRAMES_PER_FILE - 1;
-            if (endFrame >= m_frames.Value)
-                endFrame = m_frames.Value - 1;
+            int endFrame = startFrame+FRAMES_PER_FILE-1;
+            if (endFrame >= m_frames.Value) endFrame = m_frames.Value-1;
 
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine("HIERARCHY");
                 m_root.Write(writer, 0);
                 writer.WriteLine("MOTION");
-                writer.WriteLine("Frames: {0}", endFrame - startFrame - 1 + 1);
+                writer.WriteLine("Frames: {0}", endFrame - startFrame+1);
                 writer.WriteLine("Frame Time: {0}", m_frame_time.Value);
                 m_frame_list[0].Write(writer);
-                for(int i = startFrame; i<= endFrame; i++)
+                for(int i = startFrame+1; i<= endFrame; i++)
                 {
                     m_frame_list[i].Write(writer);
                 }
