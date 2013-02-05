@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Slider Name="durationSlider" Maximum="30" Minimum="8" Interval="1" Value="24" Margin="8" ValueChanged="durationSlider_ValueChanged" SmallChange="1" />
+        <Slider Name="durationSlider" Maximum="60" Minimum="8" Interval="1" Value="24" Margin="8" ValueChanged="durationSlider_ValueChanged" SmallChange="1" />
         <Label Grid.Row="0" Grid.Column="1" Name="durationValueLabel" MinWidth="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Content="0 sec" />
         <Border Grid.Row="1" Grid.ColumnSpan="2" Height="4" Margin="4" />
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
