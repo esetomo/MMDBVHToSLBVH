@@ -94,17 +94,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BVHView.xaml">
+    <Page Include="Views\BVHView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FpsInputWindow.xaml">
+    <Page Include="Views\FpsInputWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="Views\Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,18 +114,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FpsInputWindow.xaml.cs">
+    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\FpsInputWindow.xaml.cs">
       <DependentUpon>FpsInputWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
+    <Compile Include="Views\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BVH.cs" />
-    <Compile Include="BVHConverter.cs" />
-    <Compile Include="BVHView.xaml.cs">
+    <Compile Include="Models\BVH.cs" />
+    <Compile Include="Models\BVHConverter.cs" />
+    <Compile Include="Views\BVHView.xaml.cs">
       <DependentUpon>BVHView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -169,6 +172,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

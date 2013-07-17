@@ -14,8 +14,9 @@ using System.Windows.Shapes;
 using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
 using System.Diagnostics;
+using WpfApplication1.Models;
 
-namespace WpfApplication1
+namespace WpfApplication1.Views
 {
     /// <summary>
     /// BVHView.xaml の相互作用ロジック
@@ -33,15 +34,20 @@ namespace WpfApplication1
             viewport.Children.Add(CreateMarker(100, 0.03));
         }
 
-        private BVH m_bvh;
+        public static readonly DependencyProperty BVHProperty =
+            DependencyProperty.Register("BVH", typeof(BVH), typeof(BVHView), new FrameworkPropertyMetadata()
+            {
+                PropertyChangedCallback = OnBVHChanged,
+            });
+
         public BVH BVH {
             get
             {
-                return m_bvh;
+                return (BVH)this.GetValue(BVHProperty);
             }
             set
             {
-                m_bvh = value;
+                this.SetValue(BVHProperty, value);
                 UpdateView();
             }
         }
@@ -70,6 +76,12 @@ namespace WpfApplication1
 
         private readonly Storyboard m_storyboard = new Storyboard();
 
+        private static void OnBVHChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            BVHView view = d as BVHView;
+            view.UpdateView();
+        }
+
         private void UpdateView()
         {
             m_storyboard.Stop();
@@ -77,10 +89,10 @@ namespace WpfApplication1
             m_storyboard.Children.Clear();
             DoubleAnimationUsingKeyFrames timeline = new DoubleAnimationUsingKeyFrames()
             {
-                Duration = new Duration(TimeSpan.FromSeconds(m_bvh.FrameTime.Value * m_bvh.Frames.Value)),
+                Duration = new Duration(TimeSpan.FromSeconds(BVH.FrameTime.Value * BVH.Frames.Value)),
                 RepeatBehavior = RepeatBehavior.Forever,                
             };
-            for (int i = 0; i < m_bvh.Frames.Value; i++)
+            for (int i = 0; i < BVH.Frames.Value; i++)
             {
                 timeline.KeyFrames.Add(new DiscreteDoubleKeyFrame(i));
             }
@@ -89,10 +101,10 @@ namespace WpfApplication1
             Storyboard.SetTargetProperty(timeline, new PropertyPath(Slider.ValueProperty));
 
             modelRoot.Children.Clear();
-            modelRoot.Children.Add(CreateMarkerTree(m_bvh.Root));
+            modelRoot.Children.Add(CreateMarkerTree(BVH.Root));
 
-            treeView1.ItemsSource = m_bvh;
-            slider1.Maximum = m_bvh.Frames.Value - 1;
+            treeView1.ItemsSource = BVH;
+            slider1.Maximum = BVH.Frames.Value - 1;
             UpdateFrame();
         }
 
@@ -284,11 +296,11 @@ namespace WpfApplication1
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (m_bvh == null)
+            if (BVH == null)
                 return;
             double v = slider1.Value;
             m_storyboard.Begin();
-            m_storyboard.Seek(TimeSpan.FromSeconds(m_bvh.FrameTime.Value * v));
+            m_storyboard.Seek(TimeSpan.FromSeconds(BVH.FrameTime.Value * v));
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
@@ -305,11 +317,11 @@ namespace WpfApplication1
 
         private void UpdateFrame()
         {
-            if (m_bvh == null)
+            if (BVH == null)
                 return;
 
-            FrameElement frame = m_bvh.FrameList[(int)slider1.Value];
-            foreach (CompositeElement joint in m_bvh.JointList)
+            FrameElement frame = BVH.FrameList[(int)slider1.Value];
+            foreach (CompositeElement joint in BVH.JointList)
             {
                 JointFrame jf = frame.GetJointFrame(joint.Name);
                 Transform3DGroup tg = (Transform3DGroup)joint.Visual.Transform;

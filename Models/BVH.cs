@@ -8,7 +8,7 @@ using System.Windows.Media.Media3D;
 using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace WpfApplication1
+namespace WpfApplication1.Models
 {
     public class BVH : IEnumerable
     {

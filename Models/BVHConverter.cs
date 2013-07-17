@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Media.Media3D;
 
-namespace WpfApplication1
+namespace WpfApplication1.Models
 {
     public class BVHConverter
     {

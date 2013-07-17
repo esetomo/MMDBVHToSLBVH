@@ -10,8 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
-namespace WpfApplication1
+namespace WpfApplication1.Views
 {
     /// <summary>
     /// FpsInputWindow.xaml の相互作用ロジック

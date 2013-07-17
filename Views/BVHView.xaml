@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="WpfApplication1.BVHView"
+﻿<UserControl x:Class="WpfApplication1.Views.BVHView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:my="clr-namespace:WpfApplication1" Height="431" Width="377">
+    xmlns:m="clr-namespace:WpfApplication1.Models" Height="431" Width="377">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
@@ -62,7 +62,7 @@
             </DockPanel>
             <TreeView HorizontalAlignment="Stretch" Margin="12,14,12,12" Name="treeView1" Grid.Row="1" FontFamily="MS Gothic" SelectedItemChanged="treeView1_SelectedItemChanged">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type my:CompositeElement}" ItemsSource="{Binding Children}">
+                    <HierarchicalDataTemplate DataType="{x:Type m:CompositeElement}" ItemsSource="{Binding Children}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding ElementName}" />
                             <TextBlock Text=" "/>
@@ -74,10 +74,10 @@
                             <TextBlock Text="]"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type my:JointFrameList}" ItemsSource="{Binding Frames}">
+                    <HierarchicalDataTemplate DataType="{x:Type m:JointFrameList}" ItemsSource="{Binding Frames}">
                         <TextBlock Text="Frames" />
                     </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type my:FrameElementList}" ItemsSource="{Binding Frames}">
+                    <HierarchicalDataTemplate DataType="{x:Type m:FrameElementList}" ItemsSource="{Binding Frames}">
                         <TextBlock Text="Frames" />
                     </HierarchicalDataTemplate>
                 </TreeView.Resources>
