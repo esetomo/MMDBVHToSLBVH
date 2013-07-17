@@ -15,7 +15,8 @@ namespace WpfApplication1.ViewModels
         {
             openCommand = new DelegateCommand(OpenCommandExecute);
             saveAsCommand = new DelegateCommand(SaveAsCommandExecute);
-            durationCommand = new DelegateCommand(DurationCommandExecute);
+
+            Duration = 60;
         }
 
         private void OpenCommandExecute(object parameter)
@@ -38,14 +39,8 @@ namespace WpfApplication1.ViewModels
             dialog.Filter = "BVHファイル(*.bvh)|*.bvh";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                BVHTo.Save(dialog.FileName);
+                BVHTo.Save(dialog.FileName, Duration);
             }
-        }
-
-        private void DurationCommandExecute(object parameter)
-        {
-            FpsInputWindow fpsInputWindow = new FpsInputWindow();
-            fpsInputWindow.ShowDialog();
         }
 
         #region BVH BVHFrom
@@ -116,6 +111,25 @@ namespace WpfApplication1.ViewModels
         }
         #endregion
 
+        #region int Duration
+        private int _Duration;
+        public int Duration
+        {
+            get
+            {
+                return _Duration;
+            }
+            set
+            {
+                if (_Duration != value)
+                {
+                    _Duration = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+        #endregion
+
         #region Commands
         private readonly ICommand openCommand;
         public ICommand OpenCommand
@@ -134,15 +148,6 @@ namespace WpfApplication1.ViewModels
                 return saveAsCommand;
             }
         }
-
-        private readonly ICommand durationCommand;
-        public ICommand DurationCommand
-        {
-            get
-            {
-                return durationCommand;
-            }
-        }    
         #endregion
     }
 }

@@ -12,7 +12,11 @@
                 </RibbonGroup>
                 <RibbonGroup Header="Option" KeyTip="O">
                     <RibbonCheckBox Label="Use All Joints" KeyTip="U" IsChecked="{Binding UseAll}"/>
-                    <RibbonButton Label="Duration" KeyTip="D" Command="{Binding DurationCommand}" />
+                    <TextBlock Text="Duration" />
+                    <StackPanel Orientation="Horizontal">
+                        <Slider Width="100" Maximum="60" Minimum="8" Interval="1" Value="{Binding Duration}" SmallChange="1" />
+                        <TextBlock Width="40" TextAlignment="Right" Text="{Binding Duration, StringFormat={}{0}sec}" />
+                    </StackPanel>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

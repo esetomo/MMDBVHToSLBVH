@@ -82,11 +82,11 @@ namespace WpfApplication1.Models
             }
         }
 
-        public static volatile int FRAMES_PER_FILE = 1800; //30x30=900 -> 30x60=1800
-
-        public void Save(string fileName)
+        public void Save(string fileName, int durationSec)
         {
-            if (m_frames.Value < FRAMES_PER_FILE) //指定秒数のフレーム(30FPS)未満なら一気に保存
+            int durationFrame = durationSec * 30;
+
+            if (m_frames.Value < durationFrame) //指定秒数のフレーム(30FPS)未満なら一気に保存
             {
                 using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
@@ -94,7 +94,7 @@ namespace WpfApplication1.Models
                 }
                 return;
             }
-            SaveSplit(fileName);
+            SaveSplit(fileName, durationFrame);
         }
 
         public void Save(Stream stream)
@@ -113,7 +113,7 @@ namespace WpfApplication1.Models
             }
         }
 
-        private void SaveSplit(string fileName)
+        private void SaveSplit(string fileName, int durationFrame)
         {
             int index = 1;　//複数ファイルのインデックス
             int startFrame = 1;
@@ -125,24 +125,25 @@ namespace WpfApplication1.Models
                                           Path.GetFileNameWithoutExtension(fileName),
                                           index,
                                           Path.GetExtension(fileName)),
-                            startFrame);
+                            startFrame,
+                            durationFrame);
 
-                startFrame += FRAMES_PER_FILE-1;
+                startFrame += durationFrame - 1;
                 index += 1;
             }
         }
 
-        private void SavePartial(string fileName, int startFrame)
+        private void SavePartial(string fileName, int startFrame, int durationFrame)
         {
             using (FileStream stream = new FileStream(fileName, FileMode.Create))
             {
-                SavePartial(stream, startFrame);
+                SavePartial(stream, startFrame, durationFrame);
             }
         }
 
-        private void SavePartial(Stream stream, int startFrame)
+        private void SavePartial(Stream stream, int startFrame, int durationFrame)
         {
-            int endFrame = startFrame+FRAMES_PER_FILE-1;
+            int endFrame = startFrame + durationFrame - 1;
             if (endFrame >= m_frames.Value) endFrame = m_frames.Value-1;
 
             using (StreamWriter writer = new StreamWriter(stream))
