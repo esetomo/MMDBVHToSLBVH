@@ -12,13 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Windows.Controls.Ribbon;
 
 namespace WpfApplication1
 {
     /// <summary>
     /// Window1.xaml の相互作用ロジック
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1 : RibbonWindow
     {
         public Window1()
         {
@@ -39,7 +40,7 @@ namespace WpfApplication1
                 bvh.Load(dialog.OpenFile());
                 bvhFrom.BVH = bvh;
                 bvhTo.BVH = bvh.Convert();
-                menuItemUseAll.IsChecked = false;
+                checkboxItemUseAll.IsChecked = false;
             }
         }
 

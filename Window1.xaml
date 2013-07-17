@@ -1,19 +1,21 @@
-﻿<Window x:Class="WpfApplication1.Window1"
+﻿<RibbonWindow x:Class="WpfApplication1.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:my="clr-namespace:WpfApplication1"
     Title="Window1" Height="420" Width="435">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open..." Click="OpenMenuItem_Click"/>
-                <MenuItem Header="Save _As..." Click="SaveAsMenuItem_Click" />
-            </MenuItem>
-            <MenuItem Header="_Option">
-                <MenuItem Name="menuItemUseAll" Header="_Use All Joints" IsCheckable="True" Checked="UseAll_Checked" Unchecked="UseAll_Unchecked"/>
-                <MenuItem Name="menuDurationSetter" Header="_Duration" Click="menuDurationSetter_Click" />
-            </MenuItem>
-        </Menu>
+        <Ribbon DockPanel.Dock="Top">
+            <RibbonTab Header="Main">
+                <RibbonGroup Header="File" KeyTip="F">
+                    <RibbonButton Label="Open..." Click="OpenMenuItem_Click" />
+                    <RibbonButton Label="Save As..." Click="SaveAsMenuItem_Click" />
+                </RibbonGroup>
+                <RibbonGroup Header="Option" KeyTip="O">
+                    <RibbonCheckBox Name="checkboxItemUseAll" Label="Use All Joints" KeyTip="U" Checked="UseAll_Checked" Unchecked="UseAll_Unchecked" />
+                    <RibbonButton Name="buttonDurationSetter" Label="Duration" KeyTip="D" Click="menuDurationSetter_Click" />
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="183*" />
@@ -24,4 +26,4 @@
             <my:BVHView Margin="16,6,6,5.75" Grid.Column="1" x:Name="bvhTo"></my:BVHView>
         </Grid>
     </DockPanel>
-</Window>
+</RibbonWindow>
