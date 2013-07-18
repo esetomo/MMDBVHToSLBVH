@@ -3,14 +3,51 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:views="clr-namespace:WpfApplication1.Views"
     Title="Window1" Height="504" Width="515">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open"
+                        CanExecute="Open_CanExecute"
+                        Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.SaveAs"
+                        CanExecute="SaveAs_CanExecute"
+                        Executed="SaveAs_Executed" />
+        <CommandBinding Command="Close"
+                        Executed="Close_Executed" />
+    </Window.CommandBindings>
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top">
-            <RibbonTab Header="Main">
-                <RibbonGroup Header="File" KeyTip="F">
-                    <RibbonButton Label="Open..." Command="{Binding OpenCommand}" />
-                    <RibbonButton Label="Save As..." Command="{Binding SaveAsCommand}" />
-                </RibbonGroup>
-                <RibbonGroup Header="Option" KeyTip="O">
+        <Ribbon DockPanel.Dock="Top" IsMinimized="True">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F">
+                    <RibbonApplicationMenu.SmallImageSource>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GlyphRunDrawing ForegroundBrush="White">
+                                    <GlyphRunDrawing.GlyphRun>
+                                        <GlyphRun CaretStops="{x:Null}"
+                                                  ClusterMap="{x:Null}"
+                                                  GlyphOffsets="{x:Null}"
+                                                  GlyphIndices="41 76 79 72"
+                                                  FontRenderingEmSize="12"
+                                                  DeviceFontName="{x:Null}"
+                                                  AdvanceWidths="5.859375 2.90625 2.90625 6.275390625">
+                                            <GlyphRun.GlyphTypeface>
+                                                <GlyphTypeface FontUri="C:\Windows\Fonts\SEGOEUI.TTF" />
+                                            </GlyphRun.GlyphTypeface>
+                                        </GlyphRun>
+                                    </GlyphRunDrawing.GlyphRun>
+                                </GlyphRunDrawing>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </RibbonApplicationMenu.SmallImageSource>
+                    <RibbonApplicationMenuItem Header="Open..."
+                                               KeyTip="O"
+                                               Command="Open" />
+                    <RibbonApplicationMenuItem Header="Save As..." KeyTip="A" Command="SaveAs" />
+                    <RibbonSeparator />
+                    <RibbonApplicationMenuItem Header="Exit" KeyTip="X" Command="Close" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Option" KeyTip="O">
+                <RibbonGroup>
                     <RibbonCheckBox Label="Use All Joints" KeyTip="U" IsChecked="{Binding UseAll}"/>
                     <TextBlock Text="Duration" />
                     <StackPanel Orientation="Horizontal">
@@ -20,7 +57,7 @@
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <Grid>
+        <Grid>            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="183*" />
                 <ColumnDefinition Width="188*" />

@@ -27,10 +27,56 @@ namespace WpfApplication1.Views
 
         public Window1()
         {
+            viewModel = new MainViewModel();
+
             InitializeComponent();
 
-            viewModel = new MainViewModel();
             DataContext = viewModel;
+        }
+
+        private void Open_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var command = viewModel.OpenCommand;
+            if (command != null)
+            {
+                e.Handled = true;
+                e.CanExecute = command.CanExecute(e.Parameter);
+            }
+        }
+
+        private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var command = viewModel.OpenCommand;
+            if (command != null)
+            {
+                e.Handled = true;
+                command.Execute(e.Parameter);
+            }
+        }
+
+        private void SaveAs_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var command = viewModel.SaveAsCommand;
+            if (command != null)
+            {
+                e.Handled = true;
+                e.CanExecute = command.CanExecute(e.Parameter);
+            }
+        }
+
+        private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var command = viewModel.SaveAsCommand;
+            if (command != null)
+            {
+                e.Handled = true;
+                command.Execute(e.Parameter);
+            }
+        }
+
+        private void Close_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
