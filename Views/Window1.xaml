@@ -14,7 +14,17 @@
                         Executed="Close_Executed" />
     </Window.CommandBindings>
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" IsMinimized="True">
+        <Ribbon DockPanel.Dock="Top">
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton Command="Open"
+                                  ToolTip="Open"
+                                  SmallImageSource="/Images/Missing16.png" />
+                    <RibbonButton Command="SaveAs"
+                                  ToolTip="SaveAs"
+                                  SmallImageSource="/Images/Missing16.png" />
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="F">
                     <RibbonApplicationMenu.SmallImageSource>
@@ -40,20 +50,31 @@
                     </RibbonApplicationMenu.SmallImageSource>
                     <RibbonApplicationMenuItem Header="Open..."
                                                KeyTip="O"
-                                               Command="Open" />
-                    <RibbonApplicationMenuItem Header="Save As..." KeyTip="A" Command="SaveAs" />
+                                               Command="Open"
+                                               ImageSource="/Images/Missing32.png"/>
+                    <RibbonApplicationMenuItem Header="Save As..."
+                                               KeyTip="A"
+                                               Command="SaveAs"
+                                               ImageSource="/Images/Missing32.png"/>
                     <RibbonSeparator />
-                    <RibbonApplicationMenuItem Header="Exit" KeyTip="X" Command="Close" />
+                    <RibbonApplicationMenuItem Header="Exit"
+                                               KeyTip="X"
+                                               Command="Close"
+                                               ImageSource="/Images/Missing32.png"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Option" KeyTip="O">
                 <RibbonGroup>
-                    <RibbonCheckBox Label="Use All Joints" KeyTip="U" IsChecked="{Binding UseAll}"/>
+                    <RibbonToggleButton Label="Use All Joints"
+                                        KeyTip="U"
+                                        IsChecked="{Binding UseAll}"
+                                        SmallImageSource="/Images/Missing16.png"
+                                        LargeImageSource="/Images/Missing32.png"/>
                     <TextBlock Text="Duration" />
                     <StackPanel Orientation="Horizontal">
                         <Slider Width="100" Maximum="60" Minimum="8" Interval="1" Value="{Binding Duration}" SmallChange="1" />
                         <TextBlock Width="40" TextAlignment="Right" Text="{Binding Duration, StringFormat={}{0}sec}" />
-                    </StackPanel>
+                    </StackPanel>                    
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
